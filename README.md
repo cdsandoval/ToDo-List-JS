@@ -4,6 +4,6 @@
 
 - Carlos Sandoval
 - Valeria Vassallo
-- Bryan Ciudad
+- Brayan Ciudad
 - Lian Nivin
 - Diego Cuevas
