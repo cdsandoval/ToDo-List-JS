@@ -1,0 +1,52 @@
+body {
+  border-width: 0.1px;
+  border-style: dashed;
+  border-color: red;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: bisque;
+  font-family: arial;
+  font-size: 5px;
+}
+
+/* HEADER */
+.header {
+  border-style: dashed;
+  border-width: 0.1px;
+  border-color: red;
+  display: flex;
+  justify-content: center;
+}
+/* END HEADER */
+
+/* MAIN */
+.formulary {
+  border-style: dashed;
+  border-width: 0.1px;
+  border-color: red;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  border-width: 0.1px;
+  border-style: dashed;
+  border-color: red;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* END MAIN */
+
+/* FOOTER */
+.footer {
+  border-style: dashed;
+  border-width: 0.1px;
+  border-color: red;
+  display: flex;
+  justify-content: center;
+}
+/* END FOOTER */
