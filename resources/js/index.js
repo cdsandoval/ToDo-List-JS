@@ -41,3 +41,13 @@ console.log(list_task);
 console.log("-----------------");
 save_taks();
 console.log(list_task);
+
+function toggle_complete(element) {
+  let identifier = element.getAttribute("data-value");
+  list_task = list_task.map(function(row) {
+    if (row["id"] == identifier) row["complete"] = !row["complete"];
+
+    return row;
+  });
+  sessionStorage.setItem("list", list_task);
+}
