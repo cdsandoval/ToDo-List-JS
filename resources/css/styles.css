@@ -172,7 +172,7 @@ textarea {
   border-color: red;
 }
 
-.todo-body .checklist .list1 {
+.todo-body .checklist .list1 .description {
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -180,4 +180,4 @@ textarea {
   padding: 0px;
 }
 
-/* END LIST */
+. /* END LIST */ ;;
