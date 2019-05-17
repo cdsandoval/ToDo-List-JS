@@ -1,29 +1,30 @@
-const list_task = [
-  {
-    id: Date.now(),
-    message: "Estudiar asdasd",
-    due_date: new Date("2017-06-12"),
-    creation_date: new Date(),
-    priority: true,
-    complete: false
-  },
-  {
-    id: Date.now(),
-    message: "Hacer Miniassignment",
-    due_date: new Date("2019-06-12"),
-    creation_date: new Date(),
-    priority: false,
-    complete: false
-  }
-];
+var list_task = [];
 
-function save_taks() {
-  var msg = "Lavar la ropa";
-  var due = new Date("2019-07-12");
-  var prior = false;
-  var new_element = create_element(msg, due, prior);
+function assignEvent() {
+  let btnAddTask = document.getElementById("btnAddTask");
+  btnAddTask.addEventListener("click", save_task);
+  let dateDue = document.getElementById("dateDue");
+  // dateDue.value = new Date();
+}
+
+window.onload = function() {
+  // let list = sessionStorage.getItem("list");
+  // console.log(Object.values(list));
+  // if (list != null) list_task = Object.getOwnPropertyNames(list);
+  // console.log(list_task);
+  assignEvent();
+};
+
+function save_task() {
+  event.preventDefault();
+  var msg = document.getElementById("txtMessage").value;
+  var due = document.getElementById("dateDue").value;
+  var priority = document.getElementById("chkPriority").checked;
+  var new_element = create_element(msg, due, priority);
   list_task.push(new_element);
-  sessionStorage.setItem("list", list_task);
+  // sessionStorage.setItem("list", list_task);
+  // console.log("Prueba");
+  console.log(list_task);
 }
 
 function create_element(message, dueDate, levelPriority) {
@@ -36,11 +37,6 @@ function create_element(message, dueDate, levelPriority) {
     complete: false
   };
 }
-
-console.log(list_task);
-console.log("-----------------");
-save_taks();
-console.log(list_task);
 
 function toggle_complete(element) {
   let identifier = element.getAttribute("data-value");

@@ -16,19 +16,19 @@
     <!-- MAIN -->
     <div class="main">
       <div class="form">
-        <form class="create-task">
+        <form class="create-task" id="frmTask">
           <ul class="form-style-1">
             <li>
               <label>Message <span class="required">*</span></label>
               <textarea
                 name="field5"
-                id="field5"
+                id="txtMessage"
                 class="field-long field-textarea"
               ></textarea>
             </li>
             <li>
               <label>Due Date <span class="required">*</span></label>
-              <input type="date" name="field6" />
+              <input type="date" id="dateDue" />
             </li>
             <li>
               <label>Priority <span class="required">*</span></label>
@@ -36,7 +36,7 @@
             <!-- toggle switch -->
 
             <label class="switch">
-              <input type="checkbox" id="togBtn" />
+              <input type="checkbox" id="chkPriority" />
               <div class="slider round">
                 <!--ADDED HTML -->
                 <span class="on">Yes</span>
@@ -47,7 +47,7 @@
 
             <!-- end toggle switch -->
             <li>
-              <input type="submit" value="Send Task" id="button" />
+              <input type="submit" id="btnAddTask" value="Send Task" />
             </li>
           </ul>
         </form>
