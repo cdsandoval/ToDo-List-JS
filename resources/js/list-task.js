@@ -25,9 +25,9 @@ function addTodo() {
   listContainer.insertAdjacentHTML(
     "afterbegin",
     `
-    <ul>
+    <ul class="list1">
+        <input type="checkbox" />
         <li>
-          <input id="${todo.id}" type="checkbox"/>
           <span>${todo.id}</span>    
         </li>
         <li>

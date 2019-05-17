@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
   border-width: 0.1px;
   border-style: dashed;
@@ -182,9 +181,3 @@ textarea {
 }
 
 /* END LIST */
-=======
-ul li {
-  display: inline;
-  padding-right: 30px;
-}
->>>>>>> Add list task base
