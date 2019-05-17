@@ -16,7 +16,7 @@
     <!-- MAIN -->
     <div class="main">
       <div class="form">
-        <form>
+        <form name="todoform" onsubmit="return(validate());">
           <ul class="form-style-1">
             <li>
               <label>Full Name <span class="required">*</span></label
@@ -55,7 +55,7 @@
             </li>
             <li>
               <label>Due Date <span class="required">*</span></label>
-              <input type="date" />
+              <input type="date" name="field6" />
             </li>
             <!-- toggle switch -->
 
@@ -88,6 +88,7 @@
     <div class="footer">Created by Team X</div>
     <!-- END FOOTER -->
 
+    <script src="resources/js/validations.js"></script>
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
     <script src="resources/js/list-task.js"></script>
   </body>
