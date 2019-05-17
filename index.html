@@ -4,10 +4,104 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="/resources/css/styles.css" />
+    <link rel="stylesheet" href="resources/css/styles.css" />
     <title>Todo List Application</title>
   </head>
   <body>
     <script src="resources/js/index.js"></script>
+    <!-- HEADER -->
+    <div class="header">
+      Welcome to our TodoList App
+    </div>
+    <!-- END HEADER -->
+    <!-- MAIN -->
+    <div class="main">
+      <div class="form">
+        <form class="create-task">
+          <ul class="form-style-1">
+            <li>
+              <label>Message <span class="required">*</span></label>
+              <textarea
+                name="field5"
+                id="field5"
+                class="field-long field-textarea"
+              ></textarea>
+            </li>
+            <li>
+              <label>Due Date <span class="required">*</span></label>
+              <input type="date" />
+            </li>
+            <li>
+              <label>Priority <span class="required">*</span></label>
+              <input type="date" />
+            </li>
+            <!-- toggle switch -->
+
+            <!-- ----CODE---- -->
+
+            <!-- end toggle switch -->
+            <li>
+              <input type="submit" value="Send Task" />
+            </li>
+          </ul>
+        </form>
+      </div>
+      <div class="list">
+        <div class="todo">
+          <div class="todo-header">
+            <span>import</span>
+            <span>messages</span>
+            <span>due-date</span>
+            <span>creation-date</span>
+            <span>priority</span>
+          </div>
+          <div class="todo-body">
+            <div class="checklist">
+              <ul class="list1">
+                <li class="description">
+                  <span><input type="checkbox"/></span>
+                  <span class="message">message</span>
+                  <span class="due create">due create</span>
+                  <span class="creation-date">creation-date</span>
+                  <span class="priority">priority</span>
+                </li>
+                <li class="description">
+                  <span><input type="checkbox"/></span>
+                  <span class="message">message</span>
+                  <span class="due create">due create</span>
+                  <span class="creation-date">creation-date</span>
+                  <span class="priority">priority</span>
+                </li>
+                <li class="description">
+                  <span><input type="checkbox"/></span>
+                  <span class="message">message</span>
+                  <span class="due create">due create</span>
+                  <span class="creation-date">creation-date</span>
+                  <span class="priority">priority</span>
+                </li>
+                <li class="description">
+                  <span><input type="checkbox"/></span>
+                  <span class="message">message</span>
+                  <span class="due create">due create</span>
+                  <span class="creation-date">creation-date</span>
+                  <span class="priority">priority</span>
+                </li>
+                <li class="description">
+                  <span><input type="checkbox"/></span>
+                  <span class="message">message</span>
+                  <span class="due create">due create</span>
+                  <span class="creation-date">creation-date</span>
+                  <span class="priority">priority</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END MAIN -->
+    <!-- FOOTER -->
+    <div class="footer">Created by Team X</div>
+    <!-- END FOOTER -->
   </body>
 </html>
