@@ -1,4 +1,29 @@
-var list_task = [];
+var list_task = [
+  {
+    id: Date.now(),
+    message: "Hola",
+    due_date: new Date("2019-05-18"),
+    creation_date: new Date(),
+    priority: false,
+    complete: false
+  },
+  {
+    id: Date.now(),
+    message: "Chao",
+    due_date: new Date("2019-05-19"),
+    creation_date: new Date(),
+    priority: true,
+    complete: false
+  },
+  {
+    id: Date.now(),
+    message: "Me llamo Juan",
+    due_date: new Date("2019-05-20"),
+    creation_date: new Date(),
+    priority: false,
+    complete: false
+  }
+];
 
 function assignEvent() {
   let btnAddTask = document.getElementById("btnAddTask");
@@ -46,4 +71,16 @@ function toggle_complete(element) {
     return row;
   });
   sessionStorage.setItem("list", list_task);
+}
+
+function sort_task(this, column) {
+  if (list_task.length > 0) {
+    let state = this.getAttribute("data-order");
+    list_task.sort(function(a, b) {
+      if (a[column] > b[column]) return 1;
+      if (a[column] < b[column]) return -1;
+      return 0;
+    });
+    if (state == "1") list_task.reverse();
+  }
 }
