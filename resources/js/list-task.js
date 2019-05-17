@@ -19,7 +19,12 @@ function addTodo() {
     complete: false
   };
 
+  console.log("hola");
   todoItems.push(todo);
+
+  const formatted_due_date = moment(todo.due_date).format("L");
+
+  const formatted_creation_date = moment(todo.creation_date).format("L");
 
   const listContainer = document.getElementById("list-task");
   listContainer.insertAdjacentHTML(
@@ -34,10 +39,10 @@ function addTodo() {
           <span>${todo.message}</span>
         </li>
         <li>
-          <span>${todo.due_date}</span>
+          <span>${formatted_due_date}</span>
         </li>
         <li>
-          <span>${todo.creation_date}</span>
+          <span>${formatted_creation_date}</span>
         </li>
         <li>
           <span>${todo.priority}</span>
