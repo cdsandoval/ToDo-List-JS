@@ -1,69 +1,55 @@
-let hash = [
-  {
-    message: "estudiar",
-    created_date: "22/22/2222",
-    due_date: "11/11/1111",
-    priority: "YES"
-  },
-  {
-    message: "leer",
-    created_date: "33/33/3333",
-    due_date: "44/44/4444",
-    priority: "YES"
-  },
-  {
+let hash = [];
+
+let listContainer = document.getElementById("list-task");
+
+list = () => {
+  hash.push({
     message: "escribir",
     created_date: "66/66/6666",
     due_date: "55/55/5555",
     priority: "NO"
-  },
-  {
-    message: "estudiar",
-    created_date: "22/22/2222",
-    due_date: "11/11/1111",
-    priority: "YES"
-  },
-  {
-    message: "leer",
-    created_date: "33/33/3333",
-    due_date: "44/44/4444",
-    priority: "YES"
-  },
-  {
-    message: "escribir",
-    created_date: "66/66/6666",
-    due_date: "55/55/5555",
-    priority: "NO"
-  }
-];
+  });
 
-// for (let i = 0; i < hash.length; i++) {
-//   // let message = `${hash[i].message} - ${hash[i].created_date} - ${
-//   //   hash[i].due_date
-//   // } - ${hash[i].priority}`;
-//   let list_task = document.getElementById("list-task");
-//   let li = document.createElement("li");
-//   li.appendChild(document.createTextNode(`${hash[i].message}`));
-//   list_task.appendChild(li);
-// }
+  let listElement = document.createElement("ul");
+  hash.forEach((key, index) => {
+    Object.keys(key).map(k => {
+      console.log(hash[index][k]);
+      let listItem = document.createElement("li");
+      listItem.innerHTML = `${hash[index][k]}`;
+      listElement.appendChild(listItem);
+      listContainer.appendChild(listElement);
+    });
+  });
+};
 
-var listContainer = document.getElementById("list-task");
+let todoItems = [];
 
-for (i = 0; i < hash.length; i++) {
-  var listElement = document.createElement("ul");
-  listContainer.appendChild(listElement);
-  var listItem = document.createElement("li");
-  var listItem2 = document.createElement("li");
-  var listItem3 = document.createElement("li");
-  var listItem4 = document.createElement("li");
+function addTodo(text) {
+  const todo = {
+    text,
+    checked: false,
+    id: Date.now()
+  };
 
-  listItem.innerHTML = hash[i].message;
-  listItem2.innerHTML = hash[i].created_date;
-  listItem3.innerHTML = hash[i].due_date;
-  listItem4.innerHTML = hash[i].priority;
+  todoItems.push(todo);
 
-  listElement.appendChild(listItem);
-  listElement.appendChild(listItem2);
-  listElement.appendChild(listItem3);
-  listElement.appendChild(listItem4);
+  const list = document.getElementById("list-task");
+  list.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <ul><li class="todo-item" data-key="${todo.id}">
+      <input id="${todo.id}" type="checkbox"/>
+      <label for="${todo.id}" class="tick js-tick"></label>
+      <span>${todo.text}</span>     
+    </li><li>hola</li><li>adios</li></ul>
+  `
+  );
 }
+
+document.getElementById("button").addEventListener("click", event => {
+  event.preventDefault();
+
+  const text = Date.now();
+
+  addTodo(text);
+});
