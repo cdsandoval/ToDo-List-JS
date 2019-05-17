@@ -3,6 +3,8 @@ var list_task = [];
 function assignEvent() {
   let btnAddTask = document.getElementById("btnAddTask");
   btnAddTask.addEventListener("click", save_task);
+  let dateDue = document.getElementById("dateDue");
+  // dateDue.value = new Date();
 }
 
 window.onload = function() {
@@ -15,9 +17,9 @@ window.onload = function() {
 
 function save_task() {
   event.preventDefault();
-  var msg = document.getElementById("txtMessage");
-  var due = document.getElementById("dateDue");
-  var priority = false;
+  var msg = document.getElementById("txtMessage").value;
+  var due = document.getElementById("dateDue").value;
+  var priority = document.getElementById("chkPriority").checked;
   var new_element = create_element(msg, due, priority);
   list_task.push(new_element);
   // sessionStorage.setItem("list", list_task);
