@@ -136,6 +136,16 @@ select {
 .form-style-1 .required {
   color: red;
 }
+textarea {
+  resize: none;
+}
+
+/* toggle switch */
+
+/* ----CODE---- */
+
+/* end toggle switch */
+
 /* END FORM */
 
 /* LIST */
