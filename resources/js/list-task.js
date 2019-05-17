@@ -1,55 +1,56 @@
-let hash = [];
+let todoItems = [
+  {
+    id: Date.now(),
+    message: "Hacer Miniassignment",
+    due_date: new Date("2019-06-12"),
+    creation_date: new Date(),
+    priority: false,
+    complete: false
+  }
+];
 
-let listContainer = document.getElementById("list-task");
-
-list = () => {
-  hash.push({
-    message: "escribir",
-    created_date: "66/66/6666",
-    due_date: "55/55/5555",
-    priority: "NO"
-  });
-
-  let listElement = document.createElement("ul");
-  hash.forEach((key, index) => {
-    Object.keys(key).map(k => {
-      console.log(hash[index][k]);
-      let listItem = document.createElement("li");
-      listItem.innerHTML = `${hash[index][k]}`;
-      listElement.appendChild(listItem);
-      listContainer.appendChild(listElement);
-    });
-  });
-};
-
-let todoItems = [];
-
-function addTodo(text) {
+function addTodo() {
   const todo = {
-    text,
-    checked: false,
-    id: Date.now()
+    id: Date.now(),
+    message: "Estudiar asdasd",
+    due_date: new Date("2017-06-12"),
+    creation_date: new Date(),
+    priority: true,
+    complete: false
   };
 
   todoItems.push(todo);
 
-  const list = document.getElementById("list-task");
-  list.insertAdjacentHTML(
+  const listContainer = document.getElementById("list-task");
+  listContainer.insertAdjacentHTML(
     "afterbegin",
     `
-    <ul><li class="todo-item" data-key="${todo.id}">
-      <input id="${todo.id}" type="checkbox"/>
-      <label for="${todo.id}" class="tick js-tick"></label>
-      <span>${todo.text}</span>     
-    </li><li>hola</li><li>adios</li></ul>
+    <ul>
+        <li>
+          <input id="${todo.id}" type="checkbox"/>
+          <span>${todo.id}</span>    
+        </li>
+        <li>
+          <span>${todo.message}</span>
+        </li>
+        <li>
+          <span>${todo.due_date}</span>
+        </li>
+        <li>
+          <span>${todo.creation_date}</span>
+        </li>
+        <li>
+          <span>${todo.priority}</span>
+        </li>
+        <li>
+          <span>${todo.complete}</span>
+        </li>
+    </ul>
   `
   );
 }
 
 document.getElementById("button").addEventListener("click", event => {
   event.preventDefault();
-
-  const text = Date.now();
-
-  addTodo(text);
+  addTodo();
 });
