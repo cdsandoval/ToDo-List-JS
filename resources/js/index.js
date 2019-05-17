@@ -16,7 +16,6 @@ window.onload = function() {
 };
 
 function save_task() {
-  event.preventDefault();
   var msg = document.getElementById("txtMessage").value;
   var due = document.getElementById("dateDue").value;
   var priority = document.getElementById("chkPriority").checked;
@@ -24,7 +23,7 @@ function save_task() {
   list_task.push(new_element);
   // sessionStorage.setItem("list", list_task);
   // console.log("Prueba");
-  console.log(list_task);
+  return new_element;
 }
 
 function create_element(message, dueDate, levelPriority) {
@@ -47,3 +46,29 @@ function toggle_complete(element) {
   });
   sessionStorage.setItem("list", list_task);
 }
+
+function todo_list() {
+  let element = save_task();
+  let string_to_date = moment(element.due_date).format();
+  const formatted_due_date = moment(string_to_date).format("L");
+  const formatted_creation_date = moment(element.creation_date).format("L");
+  const listContainer = document.getElementById("list1");
+
+  listContainer.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <li class="description">
+    <span><input type="checkbox"/></span>
+    <span class="message">${element.message}</span>
+    <span class="due create">${formatted_due_date}</span>
+    <span class="creation-date">${formatted_creation_date}</span>
+    <span class="priority">${element.priority}</span>
+    </li>
+    `
+  );
+}
+
+document.getElementById("btnAddTask").addEventListener("click", event => {
+  event.preventDefault();
+  todo_list();
+});
