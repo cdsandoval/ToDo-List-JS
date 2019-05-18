@@ -30,6 +30,15 @@ function assignEvent() {
   btnAddTask.addEventListener("click", save_task);
   let dateDue = document.getElementById("dateDue");
   // dateDue.value = new Date();
+  let columns = document.getElementsByClassName("colHeader");
+  let nColumns = columns.length;
+  for (let i = 0; i < nColumns; i++) {
+    let propertyName = columns[i].getAttribute("data-column");
+    columns[i].addEventListener(
+      "click",
+      sort_task.bind(null, columns[i], propertyName)
+    );
+  }
 }
 
 window.onload = function() {
@@ -49,13 +58,14 @@ function save_task() {
   list_task.push(new_element);
   // sessionStorage.setItem("list", list_task);
   // console.log("Prueba");
-  console.log(list_task);
+  todo_list();
 }
 
 function create_element(message, dueDate, levelPriority) {
+  let format_message = message.charAt(0).toUpperCase() + message.slice(1);
   return {
     id: Date.now(),
-    message: message,
+    message: format_message,
     due_date: dueDate,
     creation_date: new Date(),
     priority: levelPriority,
@@ -70,17 +80,69 @@ function toggle_complete(element) {
 
     return row;
   });
-  sessionStorage.setItem("list", list_task);
+  console.log(list_task);
+  // sessionStorage.setItem("list", list_task);
 }
 
-function sort_task(this, column) {
+function todo_list() {
+  let string_to_date,
+    formatted_due_date,
+    formatted_creation_date,
+    isCompleted = "";
+  let listContainer = document.getElementById("list1");
+  for (let index in list_task) {
+    string_to_date = moment(list_task[index].due_date).format();
+    formatted_due_date = moment(string_to_date).format("L");
+    formatted_creation_date = moment(list_task[index].creation_date).format(
+      "L"
+    );
+    isCompleted = "";
+
+    if (list_task[index].complete) isCompleted = "checked";
+    listContainer.insertAdjacentHTML(
+      "afterbegin",
+      `
+    <li class="description">
+    <span>
+      <input type="checkbox"
+             data-value="${list_task[index].id}"
+             onclick="toggle_complete(this)" ${isCompleted}/>
+    </span>
+    <span class="message">${list_task[index].message}</span>
+    <span class="due create">${formatted_due_date}</span>
+    <span class="creation-date">${formatted_creation_date}</span>
+    <span class="priority">${list_task[index].priority}</span>
+    </li>
+    `
+    );
+  }
+}
+
+function sort_task(element, column) {
+  let columns = document.getElementsByClassName("colHeader");
+  let nColumns = columns.length;
+  for (let i = 0; i < nColumns; i++)
+    columns[i].innerHTML = columns[i].innerHTML
+      .replace(" ▲", "")
+      .replace(" ▼", "");
+
   if (list_task.length > 0) {
-    let state = this.getAttribute("data-order");
+    let state = element.getAttribute("data-order");
+    let nameCol = element.getAttribute("data-name");
     list_task.sort(function(a, b) {
       if (a[column] > b[column]) return 1;
       if (a[column] < b[column]) return -1;
       return 0;
     });
-    if (state == "1") list_task.reverse();
+    if (state == "1") {
+      list_task.reverse();
+      element.setAttribute("data-order", "0");
+      element.innerHTML = nameCol + " ▼";
+    } else {
+      element.setAttribute("data-order", "1");
+      element.innerHTML = nameCol + " ▲";
+    }
+    document.getElementById("list1").innerHTML = "";
+    todo_list();
   }
 }

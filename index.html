@@ -8,7 +8,6 @@
     <title>Todo List Application</title>
   </head>
   <body>
-    <script src="resources/js/index.js"></script>
     <!-- HEADER -->
     <div class="header">
       Welcome to our TodoList App
@@ -56,51 +55,39 @@
       <div class="list">
         <div class="todo">
           <div class="todo-header">
-            <span>import</span>
-            <span>messages</span>
-            <span>due-date</span>
-            <span>creation-date</span>
-            <span>priority</span>
+            <span></span>
+            <span
+              class="colHeader"
+              data-column="message"
+              data-state="0"
+              data-name="Message"
+              >Message</span
+            >
+            <span
+              class="colHeader"
+              data-column="due_date"
+              data-state="0"
+              data-name="Due Date"
+              >Due Date</span
+            >
+            <span
+              class="colHeader"
+              data-column="creation_date"
+              data-state="0"
+              data-name="Creation Date"
+              >Creation Date</span
+            >
+            <span
+              class="colHeader"
+              data-column="priority"
+              data-state="0"
+              data-name="Priority"
+              >Priority</span
+            >
           </div>
           <div class="todo-body">
             <div class="checklist">
-              <ul class="list1">
-                <li class="description">
-                  <span><input type="checkbox"/></span>
-                  <span class="message">message</span>
-                  <span class="due create">due create</span>
-                  <span class="creation-date">creation-date</span>
-                  <span class="priority">priority</span>
-                </li>
-                <li class="description">
-                  <span><input type="checkbox"/></span>
-                  <span class="message">message</span>
-                  <span class="due create">due create</span>
-                  <span class="creation-date">creation-date</span>
-                  <span class="priority">priority</span>
-                </li>
-                <li class="description">
-                  <span><input type="checkbox"/></span>
-                  <span class="message">message</span>
-                  <span class="due create">due create</span>
-                  <span class="creation-date">creation-date</span>
-                  <span class="priority">priority</span>
-                </li>
-                <li class="description">
-                  <span><input type="checkbox"/></span>
-                  <span class="message">message</span>
-                  <span class="due create">due create</span>
-                  <span class="creation-date">creation-date</span>
-                  <span class="priority">priority</span>
-                </li>
-                <li class="description">
-                  <span><input type="checkbox"/></span>
-                  <span class="message">message</span>
-                  <span class="due create">due create</span>
-                  <span class="creation-date">creation-date</span>
-                  <span class="priority">priority</span>
-                </li>
-              </ul>
+              <ul class="list1" id="list1"></ul>
             </div>
           </div>
         </div>
@@ -110,5 +97,7 @@
     <!-- FOOTER -->
     <div class="footer">Created by Team X</div>
     <!-- END FOOTER -->
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+    <script src="resources/js/index.js"></script>
   </body>
 </html>
