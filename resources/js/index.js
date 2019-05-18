@@ -1,43 +1,87 @@
-var list_task = [];
+var list_task = [
+  {
+    id: Date.now(),
+    message: "Hola",
+    due_date: new Date("2019-05-18"),
+    creation_date: new Date(),
+    priority: false,
+    complete: false
+  },
+  {
+    id: Date.now(),
+    message: "Chao",
+    due_date: new Date("2019-05-19"),
+    creation_date: new Date(),
+    priority: true,
+    complete: false
+  },
+  {
+    id: Date.now(),
+    message: "Me llamo Juan",
+    due_date: new Date("2019-05-20"),
+    creation_date: new Date(),
+    priority: false,
+    complete: false
+  }
+];
 
 function assignEvent() {
   let btnAddTask = document.getElementById("btnAddTask");
   btnAddTask.addEventListener("click", save_task);
   let dateDue = document.getElementById("dateDue");
   // dateDue.value = new Date();
+  let columns = document.getElementsByClassName("colHeader");
+  let nColumns = columns.length;
+  for (let i = 0; i < nColumns; i++) {
+    let propertyName = columns[i].getAttribute("data-column");
+    columns[i].addEventListener(
+      "click",
+      sort_task.bind(null, columns[i], propertyName)
+    );
+  }
 }
 
 window.onload = function() {
-  // let list = sessionStorage.getItem("list");
-  // console.log(Object.values(list));
-  // if (list != null) list_task = Object.getOwnPropertyNames(list);
-  // console.log(list_task);
   assignEvent();
 };
 
+function create_element(message, dueDate, levelPriority) {
+  let format_message = message.charAt(0).toUpperCase() + message.slice(1);
+  return {
+    id: Date.now(),
+    message: format_message,
+    due_date: moment(dueDate, "YYYY-MM-DD"),
+    creation_date: new Date(),
+    priority: levelPriority,
+    complete: false
+  };
+}
+
+function validate(message, due_date) {
+  if (message.value.trim().length == 0) {
+    message.focus();
+    return false;
+  }
+
+  if (due_date.value == "") {
+    due_date.focus();
+    return false;
+  }
+  return true;
+}
+
 function save_task() {
+  event.preventDefault();
   var msg = document.getElementById("txtMessage");
   var due = document.getElementById("dateDue");
   var priority = document.getElementById("chkPriority");
-
   if (validate(msg, due)) {
     var new_element = create_element(msg.value, due.value, priority.checked);
     list_task.push(new_element);
     // sessionStorage.setItem("list", list_task);
     // console.log("Prueba");
-    todo_list(new_element);
+    todo_list();
   }
-}
-
-function create_element(message, dueDate, levelPriority) {
-  return {
-    id: Date.now(),
-    message: message,
-    due_date: dueDate,
-    creation_date: new Date(),
-    priority: levelPriority,
-    complete: false
-  };
 }
 
 function toggle_complete(element) {
@@ -47,40 +91,73 @@ function toggle_complete(element) {
 
     return row;
   });
-  sessionStorage.setItem("list", list_task);
+  console.log(list_task);
+  // sessionStorage.setItem("list", list_task);
 }
 
-function todo_list(new_element) {
-  let string_to_date = moment(new_element.due_date).format();
-  const formatted_due_date = moment(string_to_date).format("L");
-  const formatted_creation_date = moment(new_element.creation_date).format("L");
-  const listContainer = document.getElementById("list1");
+function todo_list() {
+  let string_to_date,
+    formatted_due_date,
+    formatted_creation_date,
+    isCompleted = "";
+  let listContainer = document.getElementById("list1");
+  for (let index in list_task) {
+    string_to_date = moment(list_task[index].due_date).format();
+    formatted_due_date = moment(string_to_date).format("L");
+    formatted_creation_date = moment(list_task[index].creation_date).format(
+      "L"
+    );
+    isCompleted = "";
 
-  listContainer.insertAdjacentHTML(
-    "afterbegin",
-    `
+    if (list_task[index].complete) isCompleted = "checked";
+    listContainer.insertAdjacentHTML(
+      "afterbegin",
+      `
     <li class="description">
-    <span><input type="checkbox"/></span>
-    <span class="message">${new_element.message}</span>
+    <span>
+      <input type="checkbox"
+             data-value="${list_task[index].id}"
+             onclick="toggle_complete(this)" ${isCompleted}/>
+    </span>
+    <span class="message">${list_task[index].message}</span>
     <span class="due create">${formatted_due_date}</span>
     <span class="creation-date">${formatted_creation_date}</span>
-    <span class="priority">${new_element.priority}</span>
+    <span class="priority">${list_task[index].priority}</span>
     </li>
     `
-  );
+    );
+  }
 }
 
-function validate(message, due_date) {
-  // message
-  if (message.value.trim().length == 0) {
-    message.focus();
-    return false;
+function sort_task(element, column) {
+  let columns = document.getElementsByClassName("colHeader");
+  let nColumns = columns.length;
+  for (let i = 0; i < nColumns; i++) {
+    if (columns[i] != element) {
+      columns[i].innerHTML = columns[i].innerHTML
+        .replace(" ▲", "")
+        .replace(" ▼", "");
+      columns[i].setAttribute("data-order", "0");
+    }
   }
-  // due date
-  if (due_date.value == "") {
-    //alert("Please determine a due date!");
-    due_date.focus();
-    return false;
+
+  if (list_task.length > 0) {
+    let state = element.getAttribute("data-order");
+    let nameCol = element.getAttribute("data-name");
+    list_task.sort(function(a, b) {
+      if (a[column] < b[column]) return 1;
+      if (a[column] > b[column]) return -1;
+      return 0;
+    });
+    if (state == "1") {
+      list_task.reverse();
+      element.setAttribute("data-order", "0");
+      element.innerHTML = nameCol + " ▼";
+    } else {
+      element.setAttribute("data-order", "1");
+      element.innerHTML = nameCol + " ▲";
+    }
+    document.getElementById("list1").innerHTML = "";
+    todo_list();
   }
-  return true;
 }
