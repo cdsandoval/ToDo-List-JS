@@ -42,35 +42,46 @@ function assignEvent() {
 }
 
 window.onload = function() {
-  // let list = sessionStorage.getItem("list");
-  // console.log(Object.values(list));
-  // if (list != null) list_task = Object.getOwnPropertyNames(list);
-  // console.log(list_task);
   assignEvent();
 };
-
-function save_task() {
-  event.preventDefault();
-  var msg = document.getElementById("txtMessage").value;
-  var due = document.getElementById("dateDue").value;
-  var priority = document.getElementById("chkPriority").checked;
-  var new_element = create_element(msg, due, priority);
-  list_task.push(new_element);
-  // sessionStorage.setItem("list", list_task);
-  // console.log("Prueba");
-  todo_list();
-}
 
 function create_element(message, dueDate, levelPriority) {
   let format_message = message.charAt(0).toUpperCase() + message.slice(1);
   return {
     id: Date.now(),
     message: format_message,
-    due_date: dueDate,
+    due_date: moment(dueDate, "YYYY-MM-DD"),
     creation_date: new Date(),
     priority: levelPriority,
     complete: false
   };
+}
+
+function validate(message, due_date) {
+  if (message.value.trim().length == 0) {
+    message.focus();
+    return false;
+  }
+
+  if (due_date.value == "") {
+    due_date.focus();
+    return false;
+  }
+  return true;
+}
+
+function save_task() {
+  event.preventDefault();
+  var msg = document.getElementById("txtMessage");
+  var due = document.getElementById("dateDue");
+  var priority = document.getElementById("chkPriority");
+  if (validate(msg, due)) {
+    var new_element = create_element(msg.value, due.value, priority.checked);
+    list_task.push(new_element);
+    // sessionStorage.setItem("list", list_task);
+    // console.log("Prueba");
+    todo_list();
+  }
 }
 
 function toggle_complete(element) {
@@ -121,17 +132,21 @@ function todo_list() {
 function sort_task(element, column) {
   let columns = document.getElementsByClassName("colHeader");
   let nColumns = columns.length;
-  for (let i = 0; i < nColumns; i++)
-    columns[i].innerHTML = columns[i].innerHTML
-      .replace(" ▲", "")
-      .replace(" ▼", "");
+  for (let i = 0; i < nColumns; i++) {
+    if (columns[i] != element) {
+      columns[i].innerHTML = columns[i].innerHTML
+        .replace(" ▲", "")
+        .replace(" ▼", "");
+      columns[i].setAttribute("data-order", "0");
+    }
+  }
 
   if (list_task.length > 0) {
     let state = element.getAttribute("data-order");
     let nameCol = element.getAttribute("data-name");
     list_task.sort(function(a, b) {
-      if (a[column] > b[column]) return 1;
-      if (a[column] < b[column]) return -1;
+      if (a[column] < b[column]) return 1;
+      if (a[column] > b[column]) return -1;
       return 0;
     });
     if (state == "1") {
