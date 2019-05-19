@@ -24,7 +24,7 @@ var list_task = [
     complete: false
   }
 ];
-
+console.log("on");
 function assignEvent() {
   let btnAddTask = document.getElementById("btnAddTask");
   btnAddTask.addEventListener("click", save_task);
@@ -109,16 +109,16 @@ function todo_list(list) {
     listContainer.insertAdjacentHTML(
       "afterbegin",
       `
-    <li class="description">
+    <li class="container">
     <span>
-      <input type="checkbox"
-             data-value="${list[index].id}"
+      <input type="checkbox" class="item"
+             data-value="${list_task[index].id}"
              onclick="toggle_complete(this)" ${isCompleted}/>
     </span>
-    <span class="message">${list[index].message}</span>
-    <span class="due create">${formatted_due_date}</span>
-    <span class="creation-date">${formatted_creation_date}</span>
-    <span class="priority">${list[index].priority}</span>
+    <span class="item message">${list_task[index].message}</span>
+    <span class="item">${formatted_due_date}</span>
+    <span class="item">${formatted_creation_date}</span>
+    <span class="item">${list_task[index].priority}</span>
     </li>
     `
     );

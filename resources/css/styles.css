@@ -1,29 +1,23 @@
 body {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
   margin-left: 10%;
   margin-right: 10%;
-  background-color: bisque;
+  background-color: #242424;
   font-family: arial;
   font-size: 20px;
+  color: white;
+  font-family: "Baloo Bhai", cursive;
 }
 
 /* HEADER */
 .header {
-  border-style: dashed;
-  border-width: 0.1px;
-  border-color: red;
   display: flex;
   justify-content: center;
+  font-size: 2em;
 }
 /* END HEADER */
 
 /* MAIN */
 .form {
-  border-style: dashed;
-  border-width: 0.1px;
-  border-color: red;
   /* height: 400px; */
   display: flex;
   justify-content: center;
@@ -31,9 +25,6 @@ body {
 }
 
 .list {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,13 +32,7 @@ body {
 /* END MAIN */
 
 /* FOOTER */
-.footer {
-  border-style: dashed;
-  border-width: 0.1px;
-  border-color: red;
-  display: flex;
-  justify-content: center;
-}
+
 /* END FOOTER */
 
 /* FORM */
@@ -59,9 +44,6 @@ body {
 }
 
 .form-style-1 {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
   margin: 50px auto;
   max-width: 400px;
   padding: 0px;
@@ -191,26 +173,23 @@ input:checked + .slider .off {
 
 /* LIST */
 .todo {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.todo-header {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
-  display: flex;
-  justify-content: space-around;
+.colHeader {
+  cursor: pointer;
+  background-color: white;
+  padding: 7px;
+  font-size: 0.8em;
+  border-radius: 10px;
+  color: #242424;
 }
 
-.todo-body {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
+.todo-header {
+  display: flex;
+  justify-content: space-around;
 }
 
 .todo-body .checklist .list1 .description {
@@ -222,3 +201,19 @@ input:checked + .slider .off {
 }
 
 /* END LIST */
+.container {
+  display: flex;
+}
+
+.item {
+  display: flex;
+  width: 20%;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-all;
+}
+
+.message {
+  justify-content: left;
+}
