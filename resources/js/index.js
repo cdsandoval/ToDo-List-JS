@@ -24,7 +24,7 @@ var list_task = [
     complete: false
   }
 ];
-
+console.log("on");
 function assignEvent() {
   let btnAddTask = document.getElementById("btnAddTask");
   btnAddTask.addEventListener("click", save_task);
@@ -104,21 +104,25 @@ function todo_list(list) {
     formatted_due_date = moment(string_to_date).format("L");
     formatted_creation_date = moment(list[index].creation_date).format("L");
     isCompleted = "";
+    star = "fa fa-star-o";
+    if (list_task[index].priority) star = "fa fa-star";
 
     if (list[index].complete) isCompleted = "checked";
     listContainer.insertAdjacentHTML(
       "afterbegin",
       `
-    <li class="description">
-    <span>
-      <input type="checkbox"
-             data-value="${list[index].id}"
-             onclick="toggle_complete(this)" ${isCompleted}/>
-    </span>
-    <span class="message">${list[index].message}</span>
-    <span class="due create">${formatted_due_date}</span>
-    <span class="creation-date">${formatted_creation_date}</span>
-    <span class="priority">${list[index].priority}</span>
+    <li class="container">
+    
+      <div class="item checkbox"><input type="checkbox" 
+             data-value="${list_task[index].id}"
+             onclick="toggle_complete(this)" ${isCompleted}/></div>
+    
+    <span class="item message">${list_task[index].message}</span>
+    <span class="item">${formatted_due_date}</span>
+    <span class="item">${formatted_creation_date}</span> 
+    <span class="item"><i class="${star}"></i></span>
+    <button class="item checkbox empty btn"><i class="fa fa-trash"></i></button>
+
     </li>
     `
     );

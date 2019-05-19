@@ -3,6 +3,8 @@ body {
   background-color: rgb(164, 90, 0);
   font-family: arial;
   font-size: 20px;
+  color: black;
+  font-family: "Baloo Bhai", cursive;
 }
 
 .app {
@@ -108,6 +110,8 @@ body {
   background: #ff7b00;
   box-shadow: none;
   -moz-box-shadow: none;
+  color: #242424;
+  font-weight: bold;
   -webkit-box-shadow: none;
 }
 
@@ -244,6 +248,10 @@ input:checked + .slider .off {
   justify-content: center;
   align-items: center;
   word-break: break-all;
+  color: black;
+}
+
+.colHeader + .item {
   color: white;
 }
 
