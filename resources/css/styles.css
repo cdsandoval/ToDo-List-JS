@@ -8,6 +8,9 @@ body {
   font-family: "Baloo Bhai", cursive;
 }
 
+ul {
+  padding-inline-start: 0px;
+}
 /* HEADER */
 .header {
   display: flex;
@@ -29,11 +32,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-/* END MAIN */
-
-/* FOOTER */
-
-/* END FOOTER */
 
 /* FORM */
 .create-task {
@@ -76,6 +74,8 @@ body {
   background: #94efff;
   box-shadow: none;
   -moz-box-shadow: none;
+  color: #242424;
+  font-weight: bold;
   -webkit-box-shadow: none;
 }
 
@@ -183,13 +183,11 @@ input:checked + .slider .off {
   background-color: white;
   padding: 7px;
   font-size: 0.8em;
-  border-radius: 10px;
   color: #242424;
 }
 
 .todo-header {
   display: flex;
-  justify-content: space-around;
 }
 
 .todo-body .checklist .list1 .description {
@@ -197,14 +195,15 @@ input:checked + .slider .off {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 0px;
 }
 
 /* END LIST */
 .container {
   display: flex;
 }
-
+.empty {
+  padding: 0 6px;
+}
 .item {
   display: flex;
   width: 20%;
@@ -214,6 +213,27 @@ input:checked + .slider .off {
   word-wrap: break-all;
 }
 
+.checkbox {
+  display: flex;
+  width: 1px;
+  margin: 0;
+}
+
 .message {
   justify-content: left;
+}
+
+/* Style buttons */
+.btn {
+  background-color: rgb(114, 41, 41); /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: rgb(173, 22, 22);
 }
