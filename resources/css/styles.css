@@ -218,7 +218,7 @@ input:checked + .slider .off {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* padding: 0px; */
+  padding: 0px;
 }
 
 /* END LIST */
