@@ -52,95 +52,51 @@ body {
 
 /* FORM */
 .create-task {
-  width: 50%;
+  width: 100%;
+}
+.due-date {
+  width: 100%;
 }
 
 .form-style-1 {
-  margin: 10px auto;
+  border-width: 0.1px;
+  border-style: dashed;
+  border-color: red;
+  margin: 50px auto;
   max-width: 400px;
-  padding: 20px 12px 10px 20px;
-  font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  padding: 0px;
+  width: 300px;
 }
 .form-style-1 li {
   padding: 0;
-  display: block;
   list-style: none;
-  margin: 10px 0 0 0;
+  margin: 0;
   width: 100%;
 }
 .form-style-1 label {
-  margin: 0 0 3px 0;
+  margin: 0;
   padding: 0px;
-  display: block;
-  font-weight: bold;
-}
-.form-style-1 input[type="text"],
-.form-style-1 input[type="date"],
-.form-style-1 input[type="datetime"],
-.form-style-1 input[type="number"],
-.form-style-1 input[type="search"],
-.form-style-1 input[type="time"],
-.form-style-1 input[type="url"],
-.form-style-1 input[type="email"],
-textarea,
-select {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  border: 1px solid #bebebe;
-  padding: 7px;
-  margin: 6px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  outline: none;
-}
-.form-style-1 input[type="text"]:focus,
-.form-style-1 input[type="date"]:focus,
-.form-style-1 input[type="datetime"]:focus,
-.form-style-1 input[type="number"]:focus,
-.form-style-1 input[type="search"]:focus,
-.form-style-1 input[type="time"]:focus,
-.form-style-1 input[type="url"]:focus,
-.form-style-1 input[type="email"]:focus,
-.form-style-1 textarea:focus,
-.form-style-1 select:focus {
-  -moz-box-shadow: 0 0 8px #88d5e9;
-  -webkit-box-shadow: 0 0 8px #88d5e9;
-  box-shadow: 0 0 8px #88d5e9;
-  border: 1px solid #88d5e9;
-}
-.form-style-1 .field-divided {
-  width: 49%;
 }
 
-.form-style-1 .field-long {
-  width: 100%;
-}
-.form-style-1 .field-select {
-  width: 100%;
-}
 .form-style-1 .field-textarea {
   height: 100px;
+  width: 100%;
 }
-.form-style-1 input[type="submit"],
+
 .form-style-1 input[type="button"] {
-  background: #4b99ad;
+  background: #4691a4;
   padding: 8px 15px 8px 15px;
   border: none;
   color: #fff;
 }
-.form-style-1 input[type="submit"]:hover,
+
 .form-style-1 input[type="button"]:hover {
-  background: #4691a4;
+  background: #94efff;
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
 }
-.form-style-1 .required {
-  color: red;
-}
+
 textarea {
   resize: none;
 }
@@ -154,7 +110,9 @@ textarea {
   height: 34px;
 }
 
-.switch input {display:none;}
+.switch input {
+  display: none;
+}
 
 .slider {
   position: absolute;
@@ -164,8 +122,8 @@ textarea {
   right: 0;
   bottom: 0;
   background-color: #ca2222;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -176,8 +134,8 @@ textarea {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -185,7 +143,7 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
@@ -195,27 +153,27 @@ input:checked + .slider:before {
 }
 
 /*------ ADDED CSS ---------*/
-.on
-{
+.on {
   display: none;
 }
 
-.on, .off
-{
+.on,
+.off {
   color: white;
   position: absolute;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
   font-size: 10px;
   font-family: Verdana, sans-serif;
 }
 
-input:checked+ .slider .on
-{display: block;}
+input:checked + .slider .on {
+}
 
-input:checked + .slider .off
-{display: none;}
+input:checked + .slider .off {
+  display: none;
+}
 
 /*--------- END --------*/
 
@@ -225,7 +183,8 @@ input:checked + .slider .off
 }
 
 .slider.round:before {
-  border-radius: 50%;}
+  border-radius: 50%;
+}
 /* end toggle switch */
 
 /* END FORM */
@@ -262,4 +221,4 @@ input:checked + .slider .off
   padding: 0px;
 }
 
-/* END LIST */ 
+/* END LIST */
