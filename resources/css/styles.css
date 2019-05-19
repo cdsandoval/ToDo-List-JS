@@ -1,39 +1,81 @@
 body {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
-  margin-left: 10%;
-  margin-right: 10%;
-  background-color: bisque;
+  margin: 0;
+  background-color: rgb(164, 90, 0);
   font-family: arial;
   font-size: 20px;
 }
 
+.app {
+  background: white;
+  max-width: 1000px;
+  margin: auto;
+  height: 100vh;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
 /* HEADER */
 .header {
-  border-style: dashed;
-  border-width: 0.1px;
-  border-color: red;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  font-weight: bold;
+  font-size: 30px;
 }
 /* END HEADER */
 
 /* MAIN */
-.form {
-  border-style: dashed;
-  border-width: 0.1px;
-  border-color: red;
-  /* height: 400px; */
+.input-group {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 20px 8%;
+}
+
+.input-group button[type="submit"] {
+  background: black;
+  padding: 8px 15px 8px 15px;
+  border: none;
+  color: #fff;
+}
+
+.input-group button[type="submit"]:hover {
+  background: #ff7b00;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+} 
+
+.control-search {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px
+}
+
+.add-task {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 8% 20px 0px;
+}
+
+.field-txt {
+  height: 100px;
+  width: 300px;
+}
+
+.field-date {
+  width: 130px;
 }
 
 .list {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,9 +84,6 @@ body {
 
 /* FOOTER */
 .footer {
-  border-style: dashed;
-  border-width: 0.1px;
-  border-color: red;
   display: flex;
   justify-content: center;
 }
@@ -58,44 +97,19 @@ body {
   width: 100%;
 }
 
-.form-style-1 {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
-  margin: 50px auto;
-  max-width: 400px;
-  padding: 0px;
-  width: 300px;
-}
-.form-style-1 li {
-  padding: 0;
-  list-style: none;
-  margin: 0;
-  width: 100%;
-}
-.form-style-1 label {
-  margin: 0;
-  padding: 0px;
-}
-
-.form-style-1 .field-textarea {
-  height: 100px;
-  width: 100%;
-}
-
-.form-style-1 input[type="button"] {
-  background: #4691a4;
+.form-style input[type="button"] {
+  background: black;
   padding: 8px 15px 8px 15px;
   border: none;
   color: #fff;
 }
 
-.form-style-1 input[type="button"]:hover {
-  background: #94efff;
+.form-style input[type="button"]:hover {
+  background: #ff7b00;
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
-}
+} 
 
 textarea {
   resize: none;
@@ -169,6 +183,7 @@ input:checked + .slider:before {
 }
 
 input:checked + .slider .on {
+  display: block;
 }
 
 input:checked + .slider .off {
@@ -191,26 +206,14 @@ input:checked + .slider .off {
 
 /* LIST */
 .todo {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
 .todo-header {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
   display: flex;
   justify-content: space-around;
-}
-
-.todo-body {
-  border-width: 0.1px;
-  border-style: dashed;
-  border-color: red;
 }
 
 .todo-body .checklist .list1 .description {
