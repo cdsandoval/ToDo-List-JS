@@ -1,6 +1,6 @@
 var list_task = [
   {
-    id: Date.now(),
+    id: Date.now() + 45,
     message: "Hola",
     due_date: new Date("2019-05-18"),
     creation_date: new Date(),
@@ -8,7 +8,7 @@ var list_task = [
     complete: false
   },
   {
-    id: Date.now(),
+    id: Date.now() + 34,
     message: "Chao",
     due_date: new Date("2019-05-19"),
     creation_date: new Date(),
@@ -16,7 +16,7 @@ var list_task = [
     complete: false
   },
   {
-    id: Date.now(),
+    id: Date.now() + 1,
     message: "Me llamo Juan",
     due_date: new Date("2019-05-20"),
     creation_date: new Date(),
@@ -28,8 +28,8 @@ var list_task = [
 function assignEvent() {
   let btnAddTask = document.getElementById("btnAddTask");
   btnAddTask.addEventListener("click", save_task);
-  let dateDue = document.getElementById("dateDue");
-  // dateDue.value = new Date();
+  let dueDate = document.getElementById("dueDate");
+  // dueDate.value = new Date();
   let columns = document.getElementsByClassName("colHeader");
   let nColumns = columns.length;
   for (let i = 0; i < nColumns; i++) {
@@ -73,14 +73,14 @@ function validate(message, due_date) {
 function save_task() {
   event.preventDefault();
   var msg = document.getElementById("txtMessage");
-  var due = document.getElementById("dateDue");
+  var due = document.getElementById("dueDate");
   var priority = document.getElementById("chkPriority");
   if (validate(msg, due)) {
     var new_element = create_element(msg.value, due.value, priority.checked);
     list_task.push(new_element);
     // sessionStorage.setItem("list", list_task);
     // console.log("Prueba");
-    todo_list();
+    todo_list(list_task);
   }
 }
 
@@ -88,41 +88,37 @@ function toggle_complete(element) {
   let identifier = element.getAttribute("data-value");
   list_task = list_task.map(function(row) {
     if (row["id"] == identifier) row["complete"] = !row["complete"];
-
     return row;
   });
-  console.log(list_task);
   // sessionStorage.setItem("list", list_task);
 }
 
-function todo_list() {
+function todo_list(list) {
   let string_to_date,
     formatted_due_date,
     formatted_creation_date,
     isCompleted = "";
   let listContainer = document.getElementById("list1");
-  for (let index in list_task) {
-    string_to_date = moment(list_task[index].due_date).format();
+  for (let index in list) {
+    string_to_date = moment(list[index].due_date).format();
     formatted_due_date = moment(string_to_date).format("L");
-    formatted_creation_date = moment(list_task[index].creation_date).format(
-      "L"
-    );
+    formatted_creation_date = moment(list[index].creation_date).format("L");
     isCompleted = "";
 
-    if (list_task[index].complete) isCompleted = "checked";
+    if (list[index].complete) isCompleted = "checked";
     listContainer.insertAdjacentHTML(
       "afterbegin",
       `
     <li class="description">
     <span>
       <input type="checkbox"
-             data-value="${list_task[index].id}"
+             data-value="${list[index].id}"
              onclick="toggle_complete(this)" ${isCompleted}/>
     </span>
-    <span class="message">${list_task[index].message}</span>
+    <span class="message">${list[index].message}</span>
     <span class="due create">${formatted_due_date}</span>
     <span class="creation-date">${formatted_creation_date}</span>
-    <span class="priority">${list_task[index].priority}</span>
+    <span class="priority">${list[index].priority}</span>
     </li>
     `
     );
@@ -158,6 +154,6 @@ function sort_task(element, column) {
       element.innerHTML = nameCol + " ▲";
     }
     document.getElementById("list1").innerHTML = "";
-    todo_list();
+    todo_list(list_task);
   }
 }
