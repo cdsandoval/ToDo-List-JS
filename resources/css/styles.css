@@ -88,12 +88,6 @@ body {
   display: flex;
   justify-content: center;
 }
-
-.footer p{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
 /* END FOOTER */
 
 /* FORM */
