@@ -169,6 +169,7 @@ input:checked + .slider:before {
 }
 
 input:checked + .slider .on {
+  display: block;
 }
 
 input:checked + .slider .off {

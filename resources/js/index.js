@@ -27,25 +27,20 @@ var list_task = [
 
 function assignEvent() {
   let btnAddTask = document.getElementById("btnAddTask");
-  btnAddTask.addEventListener("click", save_task);
-  let dueDate = document.getElementById("dueDate");
-  // dueDate.value = new Date();
+  btnAddTask.addEventListener("click", addTask);
+
   let columns = document.getElementsByClassName("colHeader");
   let nColumns = columns.length;
   for (let i = 0; i < nColumns; i++) {
     let propertyName = columns[i].getAttribute("data-column");
     columns[i].addEventListener(
       "click",
-      sort_task.bind(null, columns[i], propertyName)
+      sortTask.bind(null, columns[i], propertyName)
     );
   }
 }
 
-window.onload = function() {
-  assignEvent();
-};
-
-function create_element(message, dueDate, levelPriority) {
+function createTask(message, dueDate, levelPriority) {
   let format_message = message.charAt(0).toUpperCase() + message.slice(1);
   return {
     id: Date.now(),
@@ -57,7 +52,7 @@ function create_element(message, dueDate, levelPriority) {
   };
 }
 
-function validate(message, due_date) {
+function validateTask(message, due_date) {
   if (message.value.trim().length == 0) {
     message.focus();
     return false;
@@ -70,38 +65,11 @@ function validate(message, due_date) {
   return true;
 }
 
-function save_task() {
-  event.preventDefault();
-  var msg = document.getElementById("txtMessage");
-  var due = document.getElementById("dueDate");
-  var priority = document.getElementById("chkPriority");
-  if (validate(msg, due)) {
-    var new_element = create_element(msg.value, due.value, priority.checked);
-    list_task.push(new_element);
-    // sessionStorage.setItem("list", list_task);
-    // console.log("Prueba");
-    todo_list(list_task);
-  }
-}
-
-function toggle_complete(element) {
-  let identifier = element.getAttribute("data-value");
-  list_task = list_task.map(function(row) {
-    if (row["id"] == identifier) row["complete"] = !row["complete"];
-    return row;
-  });
-  // sessionStorage.setItem("list", list_task);
-}
-
-function todo_list(list) {
-  let string_to_date,
-    formatted_due_date,
-    formatted_creation_date,
-    isCompleted = "";
+function listTask(list) {
+  let formatted_due_date, formatted_creation_date, isCompleted;
   let listContainer = document.getElementById("list1");
   for (let index in list) {
-    string_to_date = moment(list[index].due_date).format();
-    formatted_due_date = moment(string_to_date).format("L");
+    formatted_due_date = moment(list[index].due_date).format("L");
     formatted_creation_date = moment(list[index].creation_date).format("L");
     isCompleted = "";
 
@@ -113,7 +81,7 @@ function todo_list(list) {
     <span>
       <input type="checkbox"
              data-value="${list[index].id}"
-             onclick="toggle_complete(this)" ${isCompleted}/>
+             onclick="completeTask(this)" ${isCompleted}/>
     </span>
     <span class="message">${list[index].message}</span>
     <span class="due create">${formatted_due_date}</span>
@@ -125,14 +93,32 @@ function todo_list(list) {
   }
 }
 
-function sort_task(element, column) {
+function addTask() {
+  event.preventDefault();
+  var msg = document.getElementById("txtMessage");
+  var due = document.getElementById("dueDate");
+  var priority = document.getElementById("chkPriority");
+  if (validateTask(msg, due)) {
+    var new_element = createTask(msg.value, due.value, priority.checked);
+    list_task.push(new_element);
+    listTask(list_task);
+  }
+}
+
+function completeTask(element) {
+  let identifier = element.getAttribute("data-value");
+  list_task = list_task.map(function(row) {
+    if (row["id"] == identifier) row["complete"] = !row["complete"];
+    return row;
+  });
+}
+
+function sortTask(element, column) {
   let columns = document.getElementsByClassName("colHeader");
   let nColumns = columns.length;
   for (let i = 0; i < nColumns; i++) {
     if (columns[i] != element) {
-      columns[i].innerHTML = columns[i].innerHTML
-        .replace(" ▲", "")
-        .replace(" ▼", "");
+      columns[i].innerHTML = columns[i].getAttribute("data-name") + " ↕";
       columns[i].setAttribute("data-order", "0");
     }
   }
@@ -148,12 +134,41 @@ function sort_task(element, column) {
     if (state == "1") {
       list_task.reverse();
       element.setAttribute("data-order", "0");
-      element.innerHTML = nameCol + " ▼";
+      element.innerHTML = nameCol + " ↓";
     } else {
       element.setAttribute("data-order", "1");
-      element.innerHTML = nameCol + " ▲";
+      element.innerHTML = nameCol + " ↑";
     }
     document.getElementById("list1").innerHTML = "";
-    todo_list(list_task);
+    listTask(list_task);
   }
+}
+
+window.onload = function() {
+  let dueDate = document.getElementById("dueDate");
+  dueDate.value = moment().format("YYYY-MM-DD");
+  assignEvent();
+};
+
+//Features Additional
+
+function filterTask(searched) {
+  let list_filtered = [];
+  list_task.forEach(function(element) {
+    if (element["message"].toLowerCase().indexOf(searched) > -1)
+      list_filtered.push(element);
+  });
+  listTask(list_filtered);
+}
+
+function deleteTask(element) {
+  let identifier = element.getAttribute("data-value");
+  let nList = list_task.length;
+  for (let i = 0; i < nList; i++) {
+    if (row["id"] == identifier) {
+      list_task.splice(i, 1);
+      break;
+    }
+  }
+  listTask(list_task);
 }
