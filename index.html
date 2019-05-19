@@ -5,99 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="resources/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Todo List Application</title>
   </head>
   <body>
-    <div class="app">    <!-- HEADER -->
-    <div class="header">
-      Welcome to our TodoList App
-    </div>
-    <!-- END HEADER -->
-    <!-- MAIN -->
-    <div class="main">
-      <form class="input-group">
-        <input placeholder="Search by message..." class="control-search" type="text" id="search"/>
-        <button type="submit">Buscar</button>
-      </form>
-      <div class="form">
-        <div class="form-style">
-          <label class="form-field">Message</label>
-          <textarea
-                id="txtMessage"
-                class="field-txt"
-              ></textarea>
-        </div>
-        <div class="form-style">
+    <div class="app">
+      <!-- HEADER -->
+      <div class="header">
+        Welcome to our TodoList App
+      </div>
+      <!-- END HEADER -->
+      <!-- MAIN -->
+      <div class="main">
+        <form class="input-group">
+          <input
+            placeholder="Search by message..."
+            class="control-search"
+            type="text"
+            id="txtSearch"
+          />
+          <button type="submit" id="btnSearch">Buscar</button>
+        </form>
+        <div class="form">
+          <div class="form-style">
+            <label class="form-field">Message</label>
+            <textarea id="txtMessage" class="field-txt"></textarea>
+          </div>
+          <div class="form-style">
             <label class="form-field">Due Date</label>
-            <input class="field-date"
-              type="date"
-              id="due-date"
-            />
+            <input class="field-date" type="date" id="dueDate" />
+          </div>
+          <div class="form-style">
+            <label class="form-field">Priority</label>
+            <!-- toggle switch -->
+            <label class="switch">
+              <input type="checkbox" id="chkPriority" />
+              <div class="slider round">
+                <span class="on">Yes</span>
+                <span class="off">No</span>
+              </div>
+            </label>
+            <!-- end toggle switch -->
+          </div>
         </div>
-        <div class="form-style">
-          <label class="form-field">Priority</label>
-          <!-- toggle switch -->
-          <label class="switch">
-            <input type="checkbox" id="chkPriority" />
-            <div class="slider round">
-              <span class="on">Yes</span>
-              <span class="off">No</span>
-            </div>
-          </label>
-          <!-- end toggle switch -->
-        </div>
-      </div>
-      <div class="form-style add-task">
+        <div class="form-style add-task">
           <input type="button" id="btnAddTask" value="Add Task" />
-      </div>
-      <div class="list">
-        <div class="todo">
-          <div class="todo-header">
-            <span></span>
-            <span
-              class="colHeader"
-              data-column="message"
-              data-state="0"
-              data-name="Message"
-              >Message</span
-            >
-            <span
-              class="colHeader"
-              data-column="due_date"
-              data-state="0"
-              data-name="Due Date"
-              >Due Date</span
-            >
-            <span
-              class="colHeader"
-              data-column="creation_date"
-              data-state="0"
-              data-name="Creation Date"
-              >Creation Date</span
-            >
-            <span
-              class="colHeader"
-              data-column="priority"
-              data-state="0"
-              data-name="Priority"
-              >Priority</span
-            >
-          </div>
-          <div class="todo-body">
-            <div class="checklist">
-              <ul class="list1" id="list1"></ul>
+        </div>
+        <div class="list">
+          <div class="todo">
+            <div class="todo-header">
+              <span class="colHeader item checkbox empty"></span>
+              <span
+                class="colHeader item"
+                data-column="message"
+                data-state="0"
+                data-name="Message"
+                >Message</span
+              >
+              <span
+                class="colHeader item"
+                data-column="due_date"
+                data-state="0"
+                data-name="Due Date"
+                >Due Date</span
+              >
+              <span
+                class="colHeader item"
+                data-column="creation_date"
+                data-state="0"
+                data-name="Creation Date"
+                >Creation Date</span
+              >
+              <span
+                class="colHeader item"
+                data-column="priority"
+                data-state="0"
+                data-name="Priority"
+                >Priority</span
+              >
+              <span class="colHeader item checkbox empty"></span>
+            </div>
+            <div class="todo-body">
+              <div class="checklist">
+                <ul class="list1" id="list1"></ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- END MAIN -->
+      <!-- FOOTER -->
+      <div class="footer"><p>Created with &#x2665; by Team Codeable</p></div>
+      <!-- END FOOTER -->
     </div>
-    <!-- END MAIN -->
-    <!-- FOOTER -->
-    <div class="footer">Created by Team X</div>
-    <!-- END FOOTER -->
   </div>
 
-    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
-    <script src="resources/js/index.js"></script>
+  <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+  <script src="resources/js/index.js"></script>
   </body>
 </html>

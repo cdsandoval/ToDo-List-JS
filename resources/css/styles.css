@@ -3,6 +3,8 @@ body {
   background-color: rgb(164, 90, 0);
   font-family: arial;
   font-size: 20px;
+  color: black;
+  font-family: "Baloo Bhai", cursive;
 }
 
 .app {
@@ -20,6 +22,7 @@ body {
   justify-content: flex-start;
   font-weight: bold;
   font-size: 30px;
+  margin-left: 8%;
 }
 /* END HEADER */
 
@@ -41,7 +44,7 @@ body {
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
-} 
+}
 
 .control-search {
   width: 100%;
@@ -57,7 +60,7 @@ body {
 .form-field {
   display: flex;
   flex-direction: column;
-  margin: 10px 0px
+  margin: 10px 0px;
 }
 
 .add-task {
@@ -86,6 +89,9 @@ body {
 .footer {
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 /* END FOOTER */
 
@@ -108,8 +114,10 @@ body {
   background: #ff7b00;
   box-shadow: none;
   -moz-box-shadow: none;
+  color: #242424;
+  font-weight: bold;
   -webkit-box-shadow: none;
-} 
+}
 
 textarea {
   resize: none;
@@ -166,7 +174,6 @@ input:checked + .slider:before {
   transform: translateX(55px);
 }
 
-/*------ ADDED CSS ---------*/
 .on {
   display: none;
 }
@@ -190,9 +197,6 @@ input:checked + .slider .off {
   display: none;
 }
 
-/*--------- END --------*/
-
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -211,9 +215,16 @@ input:checked + .slider .off {
   width: 100%;
 }
 
+.colHeader {
+  cursor: pointer;
+  background-color: black;
+  padding: 7px;
+  font-size: 0.8em;
+  color: #242424;
+}
+
 .todo-header {
   display: flex;
-  justify-content: space-around;
 }
 
 .todo-body .checklist .list1 .description {
@@ -221,7 +232,50 @@ input:checked + .slider .off {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 0px;
 }
 
 /* END LIST */
+
+.container {
+  display: flex;
+}
+.empty {
+  padding: 0 6px;
+}
+.item {
+  display: flex;
+  width: 20%;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  word-break: break-all;
+  color: black;
+}
+
+.colHeader + .item {
+  color: white;
+}
+
+.checkbox {
+  display: flex;
+  width: 1px;
+  margin: 0;
+}
+
+.message {
+  justify-content: left;
+}
+
+/* Style buttons */
+.btn {
+  background-color: rgb(114, 41, 41);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: rgb(173, 22, 22);
+}
