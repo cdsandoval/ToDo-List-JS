@@ -170,7 +170,6 @@ input:checked + .slider:before {
   transform: translateX(55px);
 }
 
-/*------ ADDED CSS ---------*/
 .on {
   display: none;
 }
@@ -194,9 +193,6 @@ input:checked + .slider .off {
   display: none;
 }
 
-/*--------- END --------*/
-
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -235,6 +231,7 @@ input:checked + .slider .off {
 }
 
 /* END LIST */
+
 .container {
   display: flex;
 }
@@ -267,12 +264,11 @@ input:checked + .slider .off {
 
 /* Style buttons */
 .btn {
-  background-color: rgb(114, 41, 41); /* Blue background */
-  border: none; /* Remove borders */
-  color: white; /* White text */
-  /* Some padding */
-  font-size: 16px; /* Set a font size */
-  cursor: pointer; /* Mouse pointer on hover */
+  background-color: rgb(114, 41, 41);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 /* Darker background on mouse-over */
